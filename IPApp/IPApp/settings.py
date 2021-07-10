@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-jbce21aa)gbi)r&8o)$!&32@rdff3-b77a%r@9hgih*#p9q=7q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://ipproject.std-929.ist.mospolytech.ru/','ipproject.std-929.ist.mospolytech.ru']
 
 
 # Application definition
