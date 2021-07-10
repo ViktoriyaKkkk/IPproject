@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Главная</h1>
+    <p>Число работников компании: {{ workerscount }} {{ get_queryset }} </p>
+    <div>
+        {% for el in workersall %}
+        <div class="alert alert-warning mt-2 worker_item">
+            <h2>{{ el.surname }} {{ el.name }} {{  el.middle_name }}</h2>
+        {% with el.information.all as ph %}
+            {% for info in ph %}
+            <p>Возраст: {{ info.age }}</p>
+            <p>Паспорт: {{ info.passport }}</p>
+            <p>Телефон: {{ info.phone }}</p>
+        {% endfor %}
+        {% endwith %}
+        {% with el.exp.all as ph%}
+        {% for exper in ph %}
+            <h3>Опыт работы</h3>
+            <p>Компания: {{ exper.company }} </p>
+            <p>Должность: {{ exper.post }} </p>
+            <p>Длительность: {{ exper.duration }} </p></div>
+        {% endfor %}
+        {% endwith %}
+        {% endfor %}
+    </div>
+{% endblock %}

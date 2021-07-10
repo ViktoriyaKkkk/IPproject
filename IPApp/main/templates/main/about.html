@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="animate__animated animate__slideInLeft">Наши самые опытные сотруднки</h1>
+    <div>
+        {% for el in workersall %}
+            {% with el.information.all as ph %}
+                {% for info in ph %}
+                    {% with el.exp.all as phtwo %}
+                        {% for exper in phtwo %}
+                            {% if info.age > 23 %}
+                                <div class="alert alert-warning mt-2 ">
+                                <h3>{{ el.surname }} {{ el.name }} {{  el.middle_name }}</h3>
+                                <p>Возраст: {{ info.age }}</p>
+                                <p>Паспорт: {{ info.passport }}</p>
+                                <p>Телефон: {{ info.phone }}</p>
+                                <h5>Опыт работы</h5>
+                                <p>Компания: {{ exper.company }} </p>
+                                <p>Должность: {{ exper.post }} </p>
+                                <p>Длительность: {{ exper.duration }} </p></div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endwith %}
+                {% endfor %}
+            {% endwith %}
+        {% endfor %}
+    </div>
+{% endblock %}
